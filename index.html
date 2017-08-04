@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>HTML Document</title>
+    <script type="text/javascript" src="punycode.js"></script>
+    <script type="text/javascript" src="papaparse.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var data;
+    var patternEmail = /@/i;
+    var url;
+    var domain;
+    document.write("<b>Выбор CSV файла:</b><br>");
+    document.write("<input type='file' id='input' onchange='parse(this.files)'>");
+    function parse() {
+        var file = document.getElementById('input').files[0];
+        Papa.parse(file, {
+            //header: true,
+            dynamicTyping: true,
+            complete: function (results) {
+                console.log("Finished:", results.data);
+                data = results.data;
+                for (var i = 0; i < data.length; i++) {
+                    document.write(data[i]+"<br>");
+                }
+                document.write("<br><br>");
+                for (var i = 0; i < data.length; i++) {
+                    if (patternEmail.exec(data[i]) != null) {
+                        var pattern = /(\w+):\/\/[-\w\.]*@([-\w.]+)\/?(\S*)/;
+                    }
+                    else {
+                        var pattern = /(\w+):\/\/([-\w\.]+)\/?(\S*)/;
+                    }
+                   url = pattern.exec(data[i]);
+                   if (url != null) {
+                        domain = url[2];
+                        document.write(punycode.toUnicode(domain) + "<br>");
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
