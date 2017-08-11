@@ -1,6 +1,6 @@
 # YandexTest-RegularExpressions
 After: Mesnyankin Alexey<br>
-Data: 4-08-2017<br><br>
+Data: 4/08/2017<br><br>
 (En) Task 1<br>
 Write a regular expression that extracts the URL from the domain name.<br>
 To test your regular expressions will be used file "urls_set.csv"<br><br>
