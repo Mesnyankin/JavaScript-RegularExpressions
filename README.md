@@ -1,5 +1,5 @@
 # JavaScript-RegularExpressions
-After: Mesnyankin Alexey<br>
+Author: Mesnyankin Alexey<br>
 Data: 4/08/2017<br><br>
 (En) Task 1<br>
 Write a regular expression that extracts the URL from the domain name.<br>
